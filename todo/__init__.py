@@ -13,6 +13,10 @@ def create_app():               #   Usamos esta funcion para crear instancias di
         DATABASE=os.environ.get('FLASK_DATABASE'),
     )
 
+    from . import db
+
+    db.init_app(app)
+
     @app.route('/hola')
     def hola():
         return 'Ema feliz'
