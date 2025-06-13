@@ -1,7 +1,7 @@
 import functools
 
 from flask import(
-    Blueprint, flash, g, render_template, request, url_for, session
+    Blueprint, flash, g, render_template, request, url_for, session, redirect
 )
 
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -18,7 +18,7 @@ def register():
         db, c = get_db()
         error = None
         c.execute(
-            'select id from user where username = %s'
+            'select id from user where username = %s', (username,)
         )
         if not username:
             error = 'Username es requerido'
