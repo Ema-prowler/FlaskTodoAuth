@@ -1,5 +1,5 @@
 from flask import(
-    blueprints, flash, g, redirect, render_template, request,url_for
+    Blueprint, flash, g, redirect, render_template, request,url_for
 )
 from werkzeug.exceptions import abort
 from todo.auth import login_required
@@ -17,3 +17,13 @@ def index():
     todos = c.fetchall()
 
     return render_template('todo/index.html', todos=todos)
+
+@bp.route('/create' , methods=['GET', 'POST'])
+@login_required
+def create():
+    return ''
+
+@bp.route('/update' , methods=['GET', 'POST'])
+@login_required
+def update():
+    return ''
